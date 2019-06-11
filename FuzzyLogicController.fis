@@ -1,0 +1,125 @@
+[System]
+Name='Naveenfinal'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=4
+NumRules=50
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temperature'
+Range=[0 45]
+NumMFs=5
+MF1='TooCold':'trimf',[-11.25 0 11.25]
+MF2='Cold':'trimf',[0 11.25 22.5]
+MF3='Warm':'trimf',[11.25 22.5 33.75]
+MF4='Hot':'trimf',[22.5 33.75 45]
+MF5='TooHot':'trimf',[33.75 45 56.25]
+
+[Input2]
+Name='Humidity'
+Range=[0 100]
+NumMFs=5
+MF1='Dry':'trimf',[-30 0 30]
+MF2='Refreshing':'trimf',[20 35 50]
+MF3='Comfortable':'trimf',[40 55 70]
+MF4='Humid':'trimf',[60 75 90]
+MF5='Sticky':'trimf',[80 100 160]
+
+[Input3]
+Name='ElectricVoltage'
+Range=[130 220]
+NumMFs=2
+MF1='Low':'trapmf',[130 130 160 180]
+MF2='Regular':'trapmf',[170 190 220 220]
+
+[Output1]
+Name='CompressorSpeed'
+Range=[0 100]
+NumMFs=5
+MF1='Off':'trimf',[-25 0 25]
+MF2='VeryLow':'trimf',[0 25 50]
+MF3='Low':'trimf',[25 50 75]
+MF4='Medium':'trimf',[50 75 100]
+MF5='Fast':'trimf',[75 100 125]
+
+[Output2]
+Name='FanSpeed'
+Range=[0 100]
+NumMFs=5
+MF1='Off':'trimf',[-25 0 25]
+MF2='VeryLow':'trimf',[0 25 50]
+MF3='Low':'trimf',[25 50 75]
+MF4='Medium':'trimf',[50 75 100]
+MF5='Fast':'trimf',[75 100 125]
+
+[Output3]
+Name='ModeOfOperation'
+Range=[0 1]
+NumMFs=2
+MF1='Dehumidifier':'trimf',[-1 0 1]
+MF2='AC':'trimf',[0 1 2]
+
+[Output4]
+Name='FinDirection'
+Range=[0 100]
+NumMFs=2
+MF1='Towards':'trapmf',[-90 -10 30 80]
+MF2='Away':'trapmf',[30 80 110 190]
+
+[Rules]
+1 1 2, 1 1 2 2 (1) : 1
+1 2 2, 1 1 2 2 (1) : 1
+1 3 2, 1 1 2 2 (1) : 1
+1 4 2, 1 2 2 2 (1) : 1
+1 5 2, 2 3 1 1 (1) : 1
+2 1 2, 1 1 2 2 (1) : 1
+2 2 2, 1 1 2 2 (1) : 1
+2 3 2, 2 2 2 2 (1) : 1
+2 4 2, 2 3 2 1 (1) : 1
+2 5 2, 3 3 1 1 (1) : 1
+3 1 2, 2 2 2 2 (1) : 1
+3 2 2, 2 2 2 2 (1) : 1
+3 3 2, 3 3 2 2 (1) : 1
+3 4 2, 4 4 1 1 (1) : 1
+3 5 2, 4 4 1 1 (1) : 1
+4 1 2, 3 3 2 2 (1) : 1
+4 2 2, 4 4 2 2 (1) : 1
+4 3 2, 4 4 2 1 (1) : 1
+4 4 2, 5 5 1 1 (1) : 1
+4 5 2, 5 5 1 1 (1) : 1
+5 1 2, 4 4 2 2 (1) : 1
+5 2 2, 4 4 2 1 (1) : 1
+5 3 2, 5 5 1 1 (1) : 1
+5 4 2, 5 5 1 1 (1) : 1
+5 5 2, 5 5 1 1 (1) : 1
+1 1 1, 1 1 2 2 (1) : 1
+1 2 1, 1 1 2 2 (1) : 1
+1 3 1, 1 1 2 2 (1) : 1
+1 4 1, 1 1 2 2 (1) : 1
+1 5 1, 1 1 1 1 (1) : 1
+2 1 1, 1 1 2 2 (1) : 1
+2 2 1, 1 1 2 2 (1) : 1
+2 3 1, 1 1 2 2 (1) : 1
+2 4 1, 2 2 2 1 (1) : 1
+2 5 1, 2 3 1 1 (1) : 1
+3 1 1, 2 2 2 2 (1) : 1
+3 2 1, 2 2 2 1 (1) : 1
+3 3 1, 2 2 2 1 (1) : 1
+3 4 1, 3 3 1 1 (1) : 1
+3 5 1, 3 3 1 1 (1) : 1
+4 1 1, 3 3 2 2 (1) : 1
+4 2 1, 3 3 2 1 (1) : 1
+4 3 1, 4 4 2 1 (1) : 1
+4 4 1, 4 4 1 1 (1) : 1
+4 5 1, 5 5 1 1 (1) : 1
+5 1 1, 4 4 2 1 (1) : 1
+5 2 1, 4 4 2 1 (1) : 1
+5 3 1, 4 4 1 1 (1) : 1
+5 4 1, 5 5 1 1 (1) : 1
+5 5 1, 5 5 1 1 (1) : 1
